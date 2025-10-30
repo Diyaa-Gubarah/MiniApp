@@ -2,17 +2,20 @@ import { NativeButton, NativeIcon, NativeText, NativeView } from '@components';
 import { ITheme } from '@types';
 import { scale } from '@utils';
 import React from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
-const { width } = Dimensions.get('window');
 type CardProps = {
   children?: React.ReactNode;
   style?: any;
 };
 
-export const Card: React.FC<CardProps> = ({ children }) => {
+export const Card: React.FC<CardProps> = ({ children, style }) => {
+  const { width } = useWindowDimensions();
+  const isLarge = width > 720;
+  const flexBasis = isLarge ? '45%' : '44%';
+
   return (
-    <NativeView margin="sm" style={styles.card}>
+    <NativeView margin="sm" style={[styles.card, { flexBasis }, style]}>
       {children}
     </NativeView>
   );
@@ -76,7 +79,8 @@ export const CardAddButton: React.FC<{ onPress?: () => void }> = ({
 
 const styles = StyleSheet.create({
   card: {
-    width: width > 720 ? scale(width * 0.38) : scale(width * 0.34),
+    flexGrow: 0,
+    maxWidth: scale(320),
   },
   cardImage: {
     width: '100%',
