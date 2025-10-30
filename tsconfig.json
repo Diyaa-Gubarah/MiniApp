@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+
+    "target": "ESNext", // ES6 or later is ideal for React Native
+    "lib": ["ES2020", "ES6", "DOM"], // Specify the default library: DOM for browser-like environment, ES6 for modern JS features
+    "allowJs": true, // Allow JS files in the project
+    "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts)
+    "esModuleInterop": true, // Allow default imports from CommonJS modules
+    "moduleResolution": "node", // Resolve modules similar to how Node does
+    "resolveJsonModule": true, // Include JSON imports
+    "strict": true, // Enable strict type checking options
+    "jsx": "react-native", // Use React Native JSX transform
+    "noEmit": true, // Do not emit JavaScript files (TypeScript will be used only for type-checking)
+
+    "baseUrl": "src",
+    "paths": {
+      "@app": ["app/index.ts"],
+      "@theme": ["app/theme/index.ts"],
+      "@utils": ["app/utils/index.ts"],
+      "@types": ["app/types/index.ts"],
+
+      "@features": ["features/index.ts"],
+      "@home": ["features/home/index.ts"],
+      "@addresses": ["features/addresses/index.ts"],
+      "@categories": ["features/categories/index.ts"],
+      "@search": ["features/imagesearch/index.ts"],
+
+      "@navigation": ["navigation/index.ts"],
+      "@store": ["store/index.ts"],
+      "@assets": ["assets/index.ts"],
+      "@components": ["common/components/index.ts"],
+      "@hooks": ["common/hooks/index.ts"],
+      "@contexts": ["common/contexts/index.ts"]
+    }
+  },
+  "isolatedModules": true, // Ensure each file can be transpiled without depending on other files
+
+  /* Type Checking */
+  "noImplicitAny": true, // Raise error on expressions and declarations with an implied 'any' type
+  "strictNullChecks": true, // Enable strict null checks
+  "strictFunctionTypes": true, // Ensure strict checking of function types
+  "strictBindCallApply": true, // Ensure 'this' is bound correctly in function calls
+  "noImplicitReturns": true, // Report error if not all code paths in function return a value
+  "noFallthroughCasesInSwitch": true, // Ensure fall-through behavior is flagged in switch statements
+
+  /* Module Configuration */
+  "module": "ESNext", // Use the modern ESNext module system
+  "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+
+  /* Source Maps */
+  "sourceMap": true, // Generate source map files (useful for debugging in React Native)
+
+  /* Linting and Formatting */
+  "pretty": true, // Output readable error messages
+
+  /* Resolve Issues with Node Modules */
+  "types": ["react", "react-native"], // Include React and React Native types
+  "skipDefaultLibCheck": true, // Ignore type-checking for default libraries
+  "include": [
+    "src/**/*", // Include all TypeScript and JavaScript files in the src folder
+    "index.ts",
+    "index.tsx"
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules from type checking
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
