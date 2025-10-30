@@ -23,6 +23,7 @@ const AddressListItems = ({}: Props) => {
 
   const ListEmptyComponent = (
     <NativeView
+      mt="lg"
       flex={1}
       alignItems="center"
       justifyContent="center"

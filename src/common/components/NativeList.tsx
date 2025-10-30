@@ -4,6 +4,7 @@ import {
   FlatListProps,
   ListRenderItem,
   ListRenderItemInfo,
+  StyleSheet,
 } from 'react-native';
 
 interface NativeListProps<T> extends Partial<FlatListProps<T>> {
@@ -42,6 +43,7 @@ function NativeListComponent<T>(props: NativeListProps<T>) {
       initialNumToRender={10}
       windowSize={5}
       showsVerticalScrollIndicator={false}
+      style={styles.container}
       {...restProps}
     />
   );
@@ -49,3 +51,9 @@ function NativeListComponent<T>(props: NativeListProps<T>) {
 
 const NativeList = memo(NativeListComponent);
 export default NativeList;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
