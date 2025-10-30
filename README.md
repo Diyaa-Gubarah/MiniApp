@@ -1,175 +1,169 @@
-MiniApp — Feature-Based React Native Application
+# 🧭 MiniApp — Feature-Based React Native Application
 
-========================================================
-Overview
-========================================================
-MiniApp is a modular, scalable, and high-performance mobile application built with React Native CLI and TypeScript. 
-The app demonstrates a feature-based architecture pattern that promotes clean code separation, modularity, and maintainability.
+A modular React Native project built with **TypeScript**, **Redux Toolkit**, and a **feature-based architecture**.  
+This app demonstrates clean state management, reusable components, and scalable theming using React Native CLI.
 
-Each feature (such as Addresses, Categories, and Image Search) is self-contained, consisting of its own components, 
-Redux slices, validations, and screens. This structure enables effortless scalability and testing, ensuring a clear 
-separation of concerns across the entire codebase.
+---
 
-The app has been fully tested on Windows and Android platforms. It also includes responsive font scaling, a unified 
-theming system, and reusable components to ensure consistent design and optimal user experience across all screen sizes.
+## 📱 Overview
 
-========================================================
-Core Features
-========================================================
-1. **Address Management**
-   - Add, update, and remove addresses.
-   - Select a preferred delivery address using radio buttons.
-   - Persist address data in the Redux store to maintain state across sessions.
-   - Validation ensures correct input before submission.
+MiniApp is a small-scale React Native application that showcases navigation, Redux-based state management, and consistent UI styling using a centralized design system.
 
-2. **Category Browser**
-   - Explore and interact with categorized product listings.
-   - Expandable containers for better navigation.
-   - Clean, minimalist design consistent with the global theme.
+It includes:
+- **Saved Address Management**
+- **Category Listing**
+- **Image Search**
+- **Reusable Components**
+- **Theme Context with Scalable Fonts**
 
-3. **Image Search**
-   - Search for products using images.
-   - Filter options for refined search results.
-   - Integrated components for product preview and display.
+> 🧪 Tested on **Windows and Android** environments only.  
+> iOS support is possible, but additional configuration is required (see notes below).
 
-4. **Reusable Components**
-   - Theme-aware primitives (NativeText, NativeView, NativeButton, etc.).
-   - Built-in support for dynamic scaling using utility functions.
-   - Consistent use of spacing, colors, and typography defined in the global theme.
+---
 
-========================================================
-Design System
-========================================================
-The app uses a centralized theme configuration to ensure visual consistency across screens.  
-All components consume theme values using the `useAppTheme` hook.
+## 🧩 Folder Structure
 
-**Fonts:**
-- Rubik-Regular
-- Rubik-Medium
-- Rubik-Bold
-
-**Color Palette:**
-- Background: #FFFFFF (White)
-- Primary Text: #000000 (Black)
-- Accent: #1AAF31 (Green)
-- Subtext: #909090 (Gray)
-- Divider Lines: #E5E5E5 (Light Gray)
-- Shadow: #00000029
-- Off-White: #F5F5F5
-
-**Typography:**
-- XS: 12
-- SM: 14
-- MD: 16
-- LG: 20
-- XL: 24
-
-**Spacing:**
-- XS: 4
-- SM: 8
-- MD: 16
-- LG: 24
-- XL: 32
-
-**Shadows:**
-- Subtle elevation effect with `shadowColor: '#00000029'`.
-
-========================================================
-Technology Stack
-========================================================
-- React Native (CLI)
-- TypeScript
-- Redux Toolkit (with Redux Persist)
-- React Navigation
-- Custom Theme Context
-- Responsive Scaling Utilities
-
-========================================================
-App Architecture
-========================================================
-MiniApp follows a **feature-based folder structure**, ensuring each feature is isolated and easy to maintain:
-
-src/
+```
+src
  ┣ app/
- ┃ ┣ theme/
- ┃ ┣ types/
- ┃ ┗ utils/
+ ┃ ┣ theme/           → Centralized colors, fonts, spacing, shadows
+ ┃ ┣ types/           → Shared TypeScript types
+ ┃ ┗ utils/           → Scaling and helper functions
  ┣ common/
- ┃ ┣ components/
- ┃ ┣ contexts/
- ┃ ┗ hooks/
+ ┃ ┣ components/      → Reusable UI primitives (Text, View, Button, Input, etc.)
+ ┃ ┣ contexts/        → Theme context provider
+ ┃ ┗ hooks/           → Typed hooks for Redux and theme usage
  ┣ features/
- ┃ ┣ addresses/
- ┃ ┣ categories/
- ┃ ┣ home/
- ┃ ┗ imagesearch/
- ┣ navigation/
- ┗ store/
+ ┃ ┣ addresses/       → Saved addresses feature (screens, redux, validation)
+ ┃ ┣ categories/      → Categories UI and components
+ ┃ ┣ imagesearch/     → Image search functionality
+ ┃ ┗ home/            → Main navigation screen
+ ┣ navigation/        → AppNavigation (React Navigation setup)
+ ┗ store/             → Redux Toolkit store configuration
+```
 
-This modular setup enables:
-- Better scalability.
-- Reduced merge conflicts.
-- Improved code readability and testing.
+---
 
-========================================================
-Font Scaling and Responsiveness
-========================================================
-All fonts and spacing are dynamically scaled based on screen dimensions using utility functions defined in:
-`src/app/utils/responsive.ts`.
+## 🎨 Design System
 
-This ensures that the app’s typography, layout, and components look consistent across various devices and resolutions.
+All UI components consume the centralized **theme** from `src/app/theme/theme.ts`.
 
-========================================================
-Platform Compatibility
-========================================================
-- Tested on **Windows** and **Android**.
-- iOS support is available but requires **macOS** for build and deployment.
-- Custom fonts are linked using `npx react-native-asset`.
-- Fully responsive and supports adaptive screen layouts.
+### Color Palette
+| Name | Hex |
+|------|------|
+| White | `#FFFFFF` |
+| Black | `#000000` |
+| Green | `#1AAF31` |
+| Cyan | `#00CEFF` |
+| Light Gray | `#E5E5E5` |
+| Off White | `#F5F5F5` |
+| Shadow Gray | `#00000029` |
+| Subtext Gray | `#909090` |
+| Transparent Black | `#00000080` |
 
-========================================================
-Installation Guide
-========================================================
-1. Clone the repository:
-   git clone <repository-url>
+### Fonts
+- **Rubik-Regular**
+- **Rubik-Medium**
+- **Rubik-Bold**
 
-2. Install dependencies:
-   npm install
+### Responsive Sizing
+Font and layout scaling is handled by utilities in:
+```
+src/app/utils/responsive.ts
+```
 
-3. Link fonts and assets:
-   npx react-native-asset
+---
 
-4. Run on Android:
-   npx react-native run-android
+## 🧠 Core Features
 
-5. (Optional) Generate Debug APK:
-   cd android
-   ./gradlew assembleDebug
+### 🏠 Saved Address
+- View, select, and add delivery addresses.
+- Data persisted in Redux store.
+- Clean typography and spacing using the Rubik font.
 
-6. For iOS setup (requires macOS):
-   - Install CocoaPods:
-     cd ios && pod install
-   - Run:
-     npx react-native run-ios
+### 📂 Categories
+- Display product or content categories.
+- Minimal interface and consistent theme usage.
 
-========================================================
-Development Highlights
-========================================================
-- Clean, feature-driven architecture.
-- Consistent design system with centralized theming.
-- Scalable and maintainable Redux state management.
-- Responsive and performant components.
-- Zero font scaling issues — all text sizes scale dynamically.
-- Ready for cross-platform extension (iOS / Android).
+### 🖼️ Image Search
+- Search and view images with interactive heart (favorite) button.
+- Favorite state indicated by a green heart (`#1AAF31`).
 
-========================================================
-Author
-========================================================
-Developed by **Diyaa**, a Survey Engineer and Software Developer with expertise in React Native.
+---
 
-========================================================
-Project Goal
-========================================================
-MiniApp serves as a professional reference for developers building production-ready React Native applications using 
-modern patterns, TypeScript, and Redux Toolkit — designed for performance, readability, and clean structure.
+## ⚙️ Tech Stack
 
+| Layer | Library |
+|-------|----------|
+| Core | React Native CLI (latest) |
+| Language | TypeScript |
+| State Management | Redux Toolkit + redux-persist |
+| Navigation | React Navigation v6 |
+| Styling | React Native `StyleSheet.create()` |
+| Theme | Custom Theme Context |
+| Fonts | Rubik (linked manually) |
+
+---
+
+## 🧩 Setup Instructions
+
+### 1️⃣ Install Dependencies
+```bash
+yarn install
+```
+
+### 2️⃣ Link Fonts
+Make sure custom Rubik fonts are properly linked:
+```bash
+npx react-native-asset
+```
+
+### 3️⃣ Run Android App
+```bash
+npx react-native run-android
+```
+
+### 4️⃣ Generate Debug APK
+```bash
+cd android
+gradlew assembleDebug
+```
+The output APK will be in:
+```
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+---
+
+## 🍏 iOS Notes
+
+If you wish to run the app on **iOS**, ensure you:
+1. Use **macOS** with Xcode installed.
+2. Run:
+   ```bash
+   cd ios && pod install
+   ```
+3. Then launch:
+   ```bash
+   npx react-native run-ios
+   ```
+
+> ⚠️ Fonts must be added to `Info.plist` and linked in the iOS build for proper rendering.
+
+---
+
+## 🚀 Highlights
+
+- **Feature-based structure** for maintainability.
+- **Typed Redux store** for reliability.
+- **Scalable typography** (font scaling via responsive utils).
+- **Cross-platform design** (Android verified, iOS compatible).
+- **Clean theme-driven UI** ensuring consistency.
+
+---
+
+
+### 💡 Summary
+
+MiniApp serves as a reference architecture for building **feature-scaled, type-safe React Native apps** 
+with **responsive design**, **Redux Toolkit**, and **theme-based styling**.
