@@ -3,7 +3,6 @@
 A modular React Native project built with **TypeScript**, **Redux Toolkit**, and a **feature-based architecture**.  
 This app demonstrates clean state management, reusable components, and scalable theming using React Native CLI.
 
----
 
 ## 📱 Overview
 
