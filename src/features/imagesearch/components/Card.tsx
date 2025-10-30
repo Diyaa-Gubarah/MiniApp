@@ -34,7 +34,7 @@ export const CardBadge: React.FC<{
     pv="xs"
     backgroundColor={backgroundColor}
   >
-    <NativeText size="xs" family="medium">
+    <NativeText trim size="xs" family="medium">
       {title}
     </NativeText>
   </NativeView>
@@ -76,7 +76,7 @@ export const CardAddButton: React.FC<{ onPress?: () => void }> = ({
 
 const styles = StyleSheet.create({
   card: {
-    width: width>720?(width * 0.38): scale(width * 0.34),
+    width: width > 720 ? scale(width * 0.38) : scale(width * 0.34),
   },
   cardImage: {
     width: '100%',
